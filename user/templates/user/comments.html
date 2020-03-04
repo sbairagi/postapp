@@ -1,0 +1,17 @@
+{% extends 'user/post.html' %}
+{% block body %}
+
+<div align="center" >
+    <h1>all post by users</h1>
+    <ol>
+    {% for i in allposts %}
+    <li>{{i.allposts}}</li>
+        <br>
+    <i> {{i.timestamp}} </i> <b> Auther : {{i.auther}}</b>
+        <br><br><br>
+    {% endfor %}
+    </ol>
+
+</div>
+
+{% endblock body %}

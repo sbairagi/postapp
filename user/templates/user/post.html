@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>post</title>
+</head>
+<body>
+
+{% for message in messages  %}
+<div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" align="center" role="alert">
+  <strong>Message : </strong> {{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+<div align="center">
+    <br>
+    <br>
+    <h1>create your post here</h1>
+
+    <form action="/post/" method="post">{% csrf_token %}
+    <textarea name="post" placeholder="Enter Your Post" required id="" cols="70" rows="10"></textarea><br><br>
+        <input type="text" required placeholder="Enter Auther Name" name="auther">
+
+
+
+        <br><br>
+
+        <input type="submit">
+    </form>
+
+</div>
+
+<div align="center" >
+    <h1>all post by users</h1>
+    <ol>
+    {% for i in allposts %}
+    <li>{{i.allposts}}</li>
+        <br>
+    <i> {{i.timestamp}} </i> <b> Auther : {{i.auther}}</b>
+        <br><br><br>
+    {% endfor %}
+    </ol>
+
+</div>
+
+
+{% block body %} {% endblock body %}
+
+</body>
+</html>
