@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from django.shortcuts import HttpResponse
-# Create your views here.
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from .serializers import UserdetailsSerializer
+from .models import Userdetails
 
-
-def index(request):
-    return render(request,"products/index.html")
+class UserdetailsViewSet(viewsets.ModelViewSet):
+    queryset = Userdetails.objects.all()
+    serializer_class = UserdetailsSerializer
